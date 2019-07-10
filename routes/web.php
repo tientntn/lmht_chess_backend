@@ -55,6 +55,10 @@ Route::group(array('middleware' => ['https','auth_manage', 'language']), functio
         Route::post('/equipments/{id}/destroy', 'EquipmentController@destroy');
         Route::resource('equipments', 'EquipmentController');
 
+        Route::get('/pieces/search', 'PieceController@search');
+        Route::post('/pieces/{id}/destroy', 'PieceController@destroy');
+        Route::resource('pieces', 'PieceController');
+
         Route::post('/users/search', 'UserController@search');
         Route::get('/users/search', 'UserController@search');
         Route::post('/users/{id}/updateStatus', 'UserController@updateStatus');

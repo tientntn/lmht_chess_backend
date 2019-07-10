@@ -71,6 +71,34 @@
                             <input type="file" name="image_upload" id="image_upload"  class="form-control"/>     
                         </div>
                       </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >Mô tả ngắn</label>
+                             <div class="col-sm-9">
+                              <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $equipment->short_content }}</textarea>
+                            </div>
+                        </div>
+                          <div class="form-group">
+                              <label class="col-sm-3 control-label" >Mảnh đồ 1</label>
+                              <div class="col-sm-9">
+                                  <select name="piece1" id="" class="">
+                                      <option value="">none</option>
+                                      @foreach($pieces as $piece)
+                                          <option value="{{$piece['id']}}" {{$equipment->piece1 == $piece['id']?"selected=selected":""}}>{{$piece['title']}}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-3 control-label" >Mảnh đồ 2</label>
+                              <div class="col-sm-9">
+                                  <select name="piece2" id="" class="">
+                                      <option value="">none</option>
+                                      @foreach($pieces as $piece)
+                                          <option value="{{$piece['id']}}" {{$equipment->piece2 == $piece['id']?"selected=selected":""}}>{{$piece['title']}}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
 
                       <div class="header">
                           <br/>

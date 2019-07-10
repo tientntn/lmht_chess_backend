@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Piece;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,6 +26,12 @@ class EquipmentController extends Controller
 
     public function create() {
       $this->data['equipment'] = new Equipment;
+      $pieces = Piece::all();
+      $data = [];
+      foreach ($pieces as $piece) {
+          $data[] = $piece->getArrayInfo();
+      }
+      $this->data['pieces'] = $data;
       return view('equipments.form', $this->data);
     }
 
@@ -44,6 +51,8 @@ class EquipmentController extends Controller
       $equipment->slug = $equipment->checkSlug($slug);
       $equipment->content = Input::get('content');
       $equipment->status = intval(Input::get('status'));
+        $equipment->piece1 = intval(Input::get('piece1'));
+        $equipment->piece2 = intval(Input::get('piece2'));
 
       $fields = $equipment->languageFields();
       foreach ($fields as $field) {
@@ -68,9 +77,16 @@ class EquipmentController extends Controller
     public function edit($id) {
       $equipment = Equipment::find($id);
       $this->data['equipment'] = $equipment;
+
       if (!$equipment) {
         return view('errors.404');
       } else {
+          $pieces = Piece::all();
+          $data = [];
+          foreach ($pieces as $piece) {
+              $data[] = $piece->getArrayInfo();
+          }
+          $this->data['pieces'] = $data;
         return view('equipments.form', $this->data);
       }
     }
@@ -91,6 +107,8 @@ class EquipmentController extends Controller
         $equipment->content = Input::get('content');
         $equipment->short_content = Input::get('short_content');
         $equipment->status = intval(Input::get('status'));
+          $equipment->piece1 = Input::get('piece1');
+          $equipment->piece2 = Input::get('piece2');
         $fields = $equipment->languageFields();
         foreach ($fields as $field) {
           $key = $field['key'];
