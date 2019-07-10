@@ -39,6 +39,32 @@ class Equipment extends Moloquent {
     return $slug;
   }
 
+  public function getArrayInfo() {
+    $rels = array(
+        "id"   => $this->_id,
+        "title" => $this->title,
+        "slug" => $this->slug,
+        "short_content" => $this->short_content,
+        "content" => $this->content,
+        "thumb" => $this->getImages(),
+    );
+    return $rels;
+  }
+
+  public function getImages() {
+      $data = [];
+      if ($this->image) {
+          $data['Small'] = env("IMAGE_URL").'/equipments/'.$this->image.'_100x100.png';
+          $data['Medium'] = env("IMAGE_URL").'/equipments/'.$this->image.'_100x100.png';
+          $data['Large'] = env("IMAGE_URL").'/equipments/'.$this->image.'_600x600.png';
+      } else {
+          $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';
+          $data['Medium'] = env("HOME_PAGE").'/images/thumb_default.png';
+          $data['Large'] = env("HOME_PAGE").'/images/thumb_default.png';
+      }
+      return $data;
+  }
+
   public function languageFields($lang = 'en') {
     $data = [
       [
