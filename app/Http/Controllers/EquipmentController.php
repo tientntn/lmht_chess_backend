@@ -51,8 +51,8 @@ class EquipmentController extends Controller
       $equipment->slug = $equipment->checkSlug($slug);
       $equipment->content = Input::get('content');
       $equipment->status = intval(Input::get('status'));
-        $equipment->piece1 = intval(Input::get('piece1'));
-        $equipment->piece2 = intval(Input::get('piece2'));
+        $equipment->piece1 = Input::get('piece1');
+        $equipment->piece2 = Input::get('piece2');
 
       $fields = $equipment->languageFields();
       foreach ($fields as $field) {

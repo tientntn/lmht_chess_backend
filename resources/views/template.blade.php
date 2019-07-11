@@ -115,6 +115,7 @@
                     <li><a href="/manage" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">{{ trans('template.dashboard') }}</span></a> </li>
                     <li><a href="/equipments" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Trang bị</span></a> </li>
                     <li><a href="/pieces" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Mảnh ghép</span></a> </li>
+                    <li><a href="/heroes" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Tướng</span></a> </li>
                     <li class="devider"></li>
                     <li> <a href="/users" class="waves-effect {{ $segment == 'users' ? 'active' : '' }}"><i data-icon="/" class="linea-icon fa-fw fa ti-user"></i> Tài khoản hệ thống</a></li>
                     <li><a href="/users/change-password" class="waves-effect {{ $segment == 'patient-duplicates' ? 'active' : '' }} "><i data-icon="7" class="linea-icon fa-fw ti-unlock"></i><span>{{ trans('template.changepassword') }}</span></a> </li>
