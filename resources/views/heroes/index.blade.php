@@ -14,7 +14,7 @@
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <h4 class="equipment-title">heroes manage</h4> </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <a href="/pieces/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
+            <a href="/heroes/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
             <ol class="breadcrumb">
                 <li><a href="/manage">Dashboard</a></li>
                 <li class="active">heroes</li>

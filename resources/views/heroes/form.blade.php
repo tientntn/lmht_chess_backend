@@ -2,7 +2,7 @@
 @extends('template')
 
 @section('title')
-    Trang bị
+    Tuớng
 @stop
 
 @section('css')
@@ -13,13 +13,13 @@
 
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="equipment-title">pieces manage</h4> </div>
+            <h4 class="equipment-title">heroes manage</h4> </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <a href="/peices/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
+            <a href="/heroes/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
             <ol class="breadcrumb">
                 <li><a href="/manage">Dashboard</a></li>
-                <li><a href="/pieces">pieces</a></li>
-                <li class="active">{{ empty($piece->id) ? 'Thêm mới' : 'Sửa' }}</li>
+                <li><a href="/pieces">heroes</a></li>
+                <li class="active">{{ empty($hero->id) ? 'Thêm mới' : 'Sửa' }}</li>
             </ol>
         </div>
     </div>
@@ -27,62 +27,68 @@
     <div class="row">
         <div class="col-md-12">
             <div class="white-box">
-                {!! Form::open(['url' => env('ADMIN_URL', '/').'pieces/'.$piece->_id, 'method' => empty($piece->_id) ? 'POST' : 'PUT', 'role' => 'form', 'files' => 'true', 'class' => 'form-horizontal group-border-dashed', 'style' => 'border-radius: 0px;', 'id' => 'form_equipment',]) !!}
+                {!! Form::open(['url' => env('ADMIN_URL', '/').'heroes/'.$hero->_id, 'method' => empty($hero->_id) ? 'POST' : 'PUT', 'role' => 'form', 'files' => 'true', 'class' => 'form-horizontal group-border-dashed', 'style' => 'border-radius: 0px;', 'id' => 'form_equipment',]) !!}
                 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
                 <div class="header">
-                    <h3>Thông tin pieces</h3>
+                    <h3>Thông tin Tướng</h3>
                 </div>
                 @include('errors/error_validation', ['errors' => $errors])
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Tên mảnh đồ *</label>
                     <div class="col-sm-6">
-                        {!! Form::text('title', $piece->title, array('placeholder' => '', 'class' => 'form-control')) !!}
+                        {!! Form::text('title', $hero->title, array('placeholder' => '', 'class' => 'form-control')) !!}
                     </div>
                 </div>
-                @if ($piece ->_id)
+                @if ($hero ->_id)
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Slug</label>
                         <div class="col-sm-6">
-                            {!! Form::text('slug', $piece->slug, array('placeholder' => '', 'class' => 'form-control')) !!}
+                            {!! Form::text('slug', $hero->slug, array('placeholder' => '', 'class' => 'form-control')) !!}
                         </div>
                     </div>
             @endif
             <!--  <div class="form-group">
                         <label class="col-sm-3 control-label" >Mô tả ngắn</label>
                          <div class="col-sm-9">
-                          <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $piece->short_content }}</textarea>
+                          <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $hero->short_content }}</textarea>
                         </div>
                       </div> -->
                 <div class="form-group">
                     <label class="col-sm-3 control-label" >Mô tả *</label>
                     <div class="col-sm-9">
-                        <textarea name="content" id="content" class="rich_text">{{ old('content') ? old('content') : $piece->content }}</textarea>
+                        <textarea name="content" id="content" class="rich_text">{{ old('content') ? old('content') : $hero->content }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" >Upload Ảnh</label>
                     <div class="col-sm-6" >
-                        @if (!empty($piece->image))
-                            <img src="{{ $piece->urlPath('100x100') }}" id="image_temp" class="image-thumb-upload"/>
+                        @if (!empty($hero->image))
+                            <img src="{{ $hero->urlPath('100x100') }}" id="image_temp" class="image-thumb-upload"/>
                         @else
                             <img src="{{ config('image.image_url_admin').'/images/thumb_default.png' }}" id="image_temp" class="image-thumb-upload"/>
                         @endif
                         <input type="file" name="image_upload" id="image_upload"  class="form-control"/>
                     </div>
                 </div>
-
-                <div class="header">
-                    <br/>
-                    <h3 class="box-title">Nội dung tiếng Anh</h3>
-                    @include('inc/language_fields', ['object' => $piece, 'fields' => $piece->languageFields()])
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">tộc</label>
+                    <div class="col-sm-6">
+                        {!! Form::text('slug', $hero->slug, array('placeholder' => '', 'class' => 'form-control')) !!}
+                    </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-offset-4 col-sm-8">
-                        <a href="/pieces" class="btn btn-default">Trở lại</a>
-                        <button id="form_submit" type="submit" class="btn btn-primary wizard-next">Lưu thông tin</button>
-                    </div>
+                {{--<div class="header">--}}
+                    {{--<br/>--}}
+                    {{--<h3 class="box-title">Nội dung tiếng Anh</h3>--}}
+                    {{--@include('inc/language_fields', ['object' => $hero, 'fields' => $hero->languageFields()])--}}
+                {{--</div>--}}
+
+                {{--<div class="row">--}}
+                    {{--<div class="col-sm-offset-4 col-sm-8">--}}
+                        {{--<a href="/pieces" class="btn btn-default">Trở lại</a>--}}
+                        {{--<button id="form_submit" type="submit" class="btn btn-primary wizard-next">Lưu thông tin</button>--}}
+                    {{--</div>--}}
                 </div>
 
                 </form>
