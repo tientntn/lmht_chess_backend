@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Heros;
 use Illuminate\Http\Request;
 use App\Models\Piece;
@@ -28,12 +29,13 @@ class HeroController extends Controller
 
     public function create() {
         $this->data['hero'] = new Heros;
-//        $pieces = Piece::all();
-//        $data = [];
-//        foreach ($pieces as $piece) {
-//            $data[] = $piece->getArrayInfo();
-//        }
-//        $this->data['pieces'] = $data;
+        $categories = Category::all();
+        $data = [];
+        foreach ($categories as $category) {
+            $data[] = $category->getArrayInfo();
+        }
+        $this->data['categories'] = $data;
+//        dd( $this->data);
         return view('heroes.form', $this->data);
     }
 
@@ -53,8 +55,7 @@ class HeroController extends Controller
         $hero->slug = $hero->checkSlug($slug);
         $hero->content = Input::get('content');
         $hero->status = intval(Input::get('status'));
-        $hero->piece1 = Input::get('piece1');
-        $hero->piece2 = Input::get('piece2');
+        $hero->category = Input::get('category');
 
         $fields = $hero->languageFields();
         foreach ($fields as $field) {
@@ -65,9 +66,9 @@ class HeroController extends Controller
         $hero->save();
         if (Input::hasFile('image_upload')) {
             $key = str_random(6);
-            $full_item_photo_dir = config('image.image_root').'/equipments';
+            $full_item_photo_dir = config('image.image_root').'/heroes';
             $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
-            $size = config('image.sizes.equipments');
+            $size = config('image.sizes.heroes');
             ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
             $hero->image = $fileName;
             $hero->save();
@@ -77,18 +78,18 @@ class HeroController extends Controller
     }
 
     public function edit($id) {
-        $hero = Equipment::find($id);
+        $hero = Heros::find($id);
         $this->data['heroes'] = $hero;
 
         if (!$hero) {
             return view('errors.404');
         } else {
-//            $pieces = Piece::all();
-//            $data = [];
-//            foreach ($pieces as $piece) {
-//                $data[] = $piece->getArrayInfo();
-//            }
-//            $this->data['pieces'] = $data;
+            $categories = Category::all();
+            $data = [];
+            foreach ($categories as $category) {
+                $data[] = $category->getArrayInfo();
+            }
+            $this->data['categories'] = $data;
             return view('heroes.form', $this->data);
         }
     }

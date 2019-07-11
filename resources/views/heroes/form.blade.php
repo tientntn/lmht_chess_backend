@@ -7,6 +7,7 @@
 
 @section('css')
     <link href="/css/editor/redactor.css?v=1.1" rel="stylesheet">
+    <link href="/css/chosen.min.css?v=1.1" rel="stylesheet">
 @stop
 
 @section('content')
@@ -73,8 +74,14 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">tộc</label>
+                    <input type="hidden" class="" name="category" value="">
                     <div class="col-sm-6">
-                        {!! Form::text('slug', $hero->slug, array('placeholder' => '', 'class' => 'form-control')) !!}
+                        <select class="chosen-select form-control" multiple tabindex="4" id="">
+                            <option value=""></option>
+                            @foreach($categories as $category)
+                            <option value="{{$category['id']}}">{{$category['title']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -84,11 +91,11 @@
                     {{--@include('inc/language_fields', ['object' => $hero, 'fields' => $hero->languageFields()])--}}
                 {{--</div>--}}
 
-                {{--<div class="row">--}}
-                    {{--<div class="col-sm-offset-4 col-sm-8">--}}
-                        {{--<a href="/pieces" class="btn btn-default">Trở lại</a>--}}
-                        {{--<button id="form_submit" type="submit" class="btn btn-primary wizard-next">Lưu thông tin</button>--}}
-                    {{--</div>--}}
+                <div class="row">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <a href="/pieces" class="btn btn-default">Trở lại</a>
+                        <button id="form_submit" type="submit" class="btn btn-primary wizard-next">Lưu thông tin</button>
+                    </div>
                 </div>
 
                 </form>
@@ -128,11 +135,15 @@
                 }
             });
 
-
+            $(".chosen-select").chosen({no_results_text: "Oops, nothing found!"});
         });//document
 
 
     </script>
+    <script src="/js/docsupport/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/js/chosen.jquery.js" type="text/javascript"></script>
+    <script src="/js/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
 @stop
 
 

@@ -2,7 +2,7 @@
 @extends('template')
 
 @section('title')
-  Tướng
+   Tộc
 @stop
 
 @section('css')
@@ -12,12 +12,12 @@
 @section('content')
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="equipment-title">heroes manage</h4> </div>
+            <h4 class="equipment-title">equipments manage</h4> </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <a href="/heroes/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
+            <a href="/categories/create" class="btn btn-info pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Thêm mới</a>
             <ol class="breadcrumb">
                 <li><a href="/manage">Dashboard</a></li>
-                <li class="active">heroes</li>
+                <li class="active">category</li>
             </ol>
         </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title">Danh sách tướng</h3>
+            <h3 class="box-title">Danh sách Tộc</h3>
             @include('errors/error_validation', ['errors' => $errors])
               <div id="datatable-icons_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                 <div class="row table-responsive" >
@@ -34,29 +34,25 @@
                       <thead>
                         <tr role="row">
                           <th style="width: 5%;">STT</th>
-                          <th style="width: 15%;">Ảnh</th>
-                          <th>Tiêu đề</th>
+                          <th>Tên</th>
                           <th style="width: 10%;">Trạng thái</th>
                           <th style="width: 15%;">Thao tác</th>
                         </tr>
                       </thead>
                       <tbody>
-                      @if ($heroes)
+                      @if ($categories)
                         <?php $i = 1;?>
-                        @foreach($heroes as $hero)
+                        @foreach($categories as $category)
                           <tr>
                               <td>{{ $i }}</td>
                               <td>
-                                <img style="width: 100px;" src="{{ $hero->urlPath('100x100') }}" /><br/>
-                              </td>
-                              <td>
-                                {{ $hero->title }}
+                                {{ $category->title }}
                                 <br/>
-                                <a href="/heroes/{{ $hero->slug }}" target="_blank">{{ $hero->slug }}</a>
+                                <a href="/categories/{{ $category->slug }}" target="_blank">{{ $category->slug }}</a>
                               </td>
-                              <td>{{ $hero->displayStatus() }}</td>
-                              <td><a class="btn btn-info btn-margin" href="/heroes/{{$hero->id}}/edit" ><i class="fa fa-pencil"></i></a>
-                                  <button data-toggle="modal" data-target="#mod-error" class="delete_equipment btn btn-danger btn-margin" pieces-id="{{ $hero->_id }}" ><i class="fa fa-times"></i></button>
+                              <td>{{ $category->displayStatus() }}</td>
+                              <td><a class="btn btn-info btn-margin" href="/categories/{{$category->id}}/edit" ><i class="fa fa-pencil"></i></a>
+                                  <button data-toggle="modal" data-target="#mod-error" class="delete_equipment btn btn-danger btn-margin" equipments-id="{{ $category->_id }}" ><i class="fa fa-times"></i></button>
                                </td>
                           </tr>
                           <?php $i++?>
@@ -131,8 +127,8 @@
             }
         });
         $('.delete_equipment').click(function() {
-          var id = $(this).attr('pieces-id');
-          $('#form_model').attr('action', '/heroes/'+id+'/destroy');
+          var id = $(this).attr('equipments-id');
+          $('#form_model').attr('action', '/equipments/'+id+'/destroy');
         });
 
 
