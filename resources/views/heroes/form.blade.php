@@ -76,7 +76,7 @@
                     <label class="col-sm-3 control-label">tộc</label>
                     <input type="hidden" class="" name="category" value="">
                     <div class="col-sm-6">
-                        <select class="chosen-select form-control" multiple tabindex="4" id="">
+                        <select class="chosen-select form-control" name="category[]" multiple tabindex="4" id="">
                             <option value=""></option>
                             @foreach($categories as $category)
                             <option value="{{$category['id']}}">{{$category['title']}}</option>

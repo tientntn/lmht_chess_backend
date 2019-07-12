@@ -79,7 +79,7 @@ class HeroController extends Controller
 
     public function edit($id) {
         $hero = Heros::find($id);
-        $this->data['heroes'] = $hero;
+        $this->data['hero'] = $hero;
 
         if (!$hero) {
             return view('errors.404');
