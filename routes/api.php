@@ -13,4 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/equipments', 'Api\EquipmentController@index');
+    Route::get('/equipments', 'Api\EquipmentController@index');
+    Route::get('/heroes', 'Api\HeroController@index');
+    Route::get('/pieces', 'Api\PieceController@index');
+
+    Route::get('/search/equipments', 'Api\EquipmentController@search');

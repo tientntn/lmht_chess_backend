@@ -50,6 +50,30 @@ class Equipment extends Moloquent {
     );
     return $rels;
   }
+  public function getArrayInfoPiece($search) {
+      $rels = array(
+          "id"   => $this->_id,
+          "title" => $this->title,
+          "slug" => $this->slug,
+          "short_content" => $this->short_content,
+          "content" => $this->content,
+          "thumb" => $this->getImages(),
+          "piece" => $this->pieceArray($search),
+      );
+      return $rels;
+  }
+  public function pieceArray($search) {
+      $data = [];
+      if($search && $search == $this->piece1) {
+          $piece = Piece::find($this->piece2);
+
+          $data = $piece->getArrayInfo();
+      }if($search &&$search == $this->piece2) {
+          $piece = Piece::find($this->piece1);
+          $data = $piece->getArrayInfo();
+      }
+      return $data;
+  }
 
   public function getImages() {
       $data = [];
