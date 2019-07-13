@@ -121,6 +121,6 @@ class PieceController extends Controller
         }
         $equipment->cleanCache();
         $equipment->delete();
-        return redirect('/equipments')->withSuccess('Xóa thành công');
+        return redirect('/pieces')->withSuccess('Xóa thành công');
     }
 }

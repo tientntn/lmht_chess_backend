@@ -59,7 +59,6 @@ Route::group(array('middleware' => ['https','auth_manage', 'language']), functio
         Route::post('/pieces/{id}/destroy', 'PieceController@destroy');
         Route::resource('pieces', 'PieceController');
 
-
         Route::get('/heroes/search', 'HeroController@search');
         Route::post('/heroes/{id}/destroy', 'HeroController@destroy');
         Route::resource('heroes', 'HeroController');
@@ -67,6 +66,10 @@ Route::group(array('middleware' => ['https','auth_manage', 'language']), functio
         Route::get('/categories/search', 'CategoryController@search');
         Route::post('/categories/{id}/destroy', 'CategoryController@destroy');
         Route::resource('categories', 'CategoryController');
+
+        Route::get('/combos/search', 'ComboController@search');
+        Route::post('/combos/{id}/destroy', 'ComboController@destroy');
+        Route::resource('combos', 'ComboController');
 
 
         Route::post('/users/search', 'UserController@search');

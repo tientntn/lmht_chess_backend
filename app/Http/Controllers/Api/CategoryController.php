@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Equipment;
@@ -18,8 +19,24 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $this->data['categories'] = Category::orderBy('status', 'desc')->get();
-        return view('categories.index', $this->data);
+        $data = [];
+        $per_page = Input::has('per_page') ? 0+Input::get('per_page') : 15;
+        $search = Input::get('search');
+        $searchCategory = Input::get('category_id');
+        $heroes = Category::where(function($query) use($search) {
+            if($search) {
+                return $query->where('title','like','%'.$search.'%');
+            }
+        })->where('_id','!=','')->paginate($per_page);
+        $data = [];
+        foreach ($heroes as $hero) {
+            $data[] = $hero->getArrayInfo();
+        }
+        $res = $heroes->toArray();
+        $res['data'] = $data;
+        $res['total'] = $heroes->total();
+        $res['status'] = 200;
+        return response()->json($res);
     }
 
     public function create() {
