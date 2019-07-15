@@ -42,6 +42,15 @@ class ComboController extends Controller
         $combo->slug = $combo->checkSlug($slug);
         $combo->link = Input::get('link');
         $combo->status = intval(Input::get('status'));
+        if (Input::hasFile('image_upload')) {
+            $key = str_random(6);
+            $full_item_photo_dir = config('image.image_root').'/equipments';
+            $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+            $size = config('image.sizes.equipments');
+            ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
+            $combo->image = $fileName;
+            $combo->save();
+        }
 
         $combo->save();
         $combo->cleanCache();
@@ -73,6 +82,15 @@ class ComboController extends Controller
             $combo->slug = $combo->checkSlug($slug, $id);
             $combo->link = Input::get('link');
             $combo->status = intval(Input::get('status'));
+            if (Input::hasFile('image_upload')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/combos';
+                $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.combos');
+                ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
+                $combo->image = $fileName;
+                $combo->save();
+            }
 
             $combo->save();
             $combo->cleanCache();

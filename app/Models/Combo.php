@@ -50,6 +50,7 @@ class Combo extends Moloquent {
             "title" => $this->title,
             "slug" => $this->slug,
             "link"  => $this->link,
+            "thumb" => $this->getImages(),
         );
         return $rels;
     }
@@ -57,9 +58,9 @@ class Combo extends Moloquent {
     public function getImages() {
         $data = [];
         if ($this->image) {
-            $data['Small'] = env("IMAGE_URL").'/equipments/'.$this->image.'_100x100.png';
-            $data['Medium'] = env("IMAGE_URL").'/equipments/'.$this->image.'_100x100.png';
-            $data['Large'] = env("IMAGE_URL").'/equipments/'.$this->image.'_600x600.png';
+            $data['Small'] = env("IMAGE_URL").'/combos/'.$this->image.'_100x100.png';
+            $data['Medium'] = env("IMAGE_URL").'/combos/'.$this->image.'_100x100.png';
+            $data['Large'] = env("IMAGE_URL").'/combos/'.$this->image.'_600x600.png';
         } else {
             $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';
             $data['Medium'] = env("HOME_PAGE").'/images/thumb_default.png';

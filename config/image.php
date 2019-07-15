@@ -22,6 +22,7 @@ return array(
         "heroes"    => array("100x100","600x600"),
         "pieces"    => array("100x100","600x600"),
         "piecesList"    => array("100x100","600x600"),
+        "combos"    => array("100x100","600x600"),
     ),
     'image_root' => env('IMAGE_ROOT'),
     'image_url' => env('IMAGE_URL'),

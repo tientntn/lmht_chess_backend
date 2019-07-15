@@ -54,6 +54,17 @@
                           {!! Form::text('link', $combo->link, array('placeholder' => '', 'class' => 'form-control')) !!}
                       </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label" >Upload Ảnh</label>
+                      <div class="col-sm-6" >
+                          @if (!empty($combo->image))
+                              <img src="{{ $combo->urlPath('100x100') }}" id="image_temp" class="image-thumb-upload"/>
+                          @else
+                              <img src="{{ config('image.image_url_admin').'/images/thumb_default.png' }}" id="image_temp" class="image-thumb-upload"/>
+                          @endif
+                          <input type="file" name="image_upload" id="image_upload"  class="form-control"/>
+                      </div>
+                  </div>
                   <div class="row">
                     <div class="col-sm-offset-4 col-sm-8">
                         <a href="/combos" class="btn btn-default">Trở lại</a>
