@@ -72,6 +72,19 @@
                     </div>
                 </div>
 
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" >Upload ảnh danh sách đồ</label>
+                    <div class="col-sm-6" >
+                        @if (!empty($piece->image_list))
+                            <img src="{{ $piece->urlPath('100x100') }}" id="image_temp_1" class="image-thumb-upload"/>
+                        @else
+                            <img src="{{ config('image.image_url_admin').'/images/thumb_default.png' }}" id="image_temp_1" class="image-thumb-upload"/>
+                        @endif
+                        <input type="file" name="image_upload_list" id="image_upload_1"  class="form-control"/>
+                    </div>
+                </div>
+
                 <div class="header">
                     <br/>
                     <h3 class="box-title">Nội dung tiếng Anh</h3>
@@ -119,6 +132,17 @@
                     $('#image_temp').attr('src', '');
                 } else {
                     $('#image_temp').attr('src',URL.createObjectURL(event.target.files[0]));
+                }
+            });
+
+            $('#image_upload_1').change(function(){
+                var size = event.target.files[0].size;
+                if (size > 2048000) {
+                    alert('Dung lượng file vượt quá 2Mb');
+                    $('#img_upload_1').val('');
+                    $('#image_temp_1').attr('src', '');
+                } else {
+                    $('#image_temp_1').attr('src',URL.createObjectURL(event.target.files[0]));
                 }
             });
 

@@ -47,6 +47,27 @@ class EquipmentController extends Controller
     public function search() {
         $search1 = Input::get('piece_id_1');
         $search2 = Input::get('piece_id_2');
+        if($search1 && $search2) {
+            $data = $this->search1();
+            return $data;
+        } elseif ($search1 || $search2) {
+            if($search1) {
+                $data = $this->search2($search1);
+                return $data;
+            } else {
+                $data = $this->search2($search2);
+                return $data;
+            }
+        } else {
+            $res['data'] = [];
+            $res['status'] = 404;
+            return response()->json($res);
+        }
+    }
+
+    public function search1() {
+        $search1 = Input::get('piece_id_1');
+        $search2 = Input::get('piece_id_2');
             $equipments = Equipment::where(function($query) use($search1) {
                 if($search1) {
                     return $query->where('piece1', $search1);
@@ -79,6 +100,16 @@ class EquipmentController extends Controller
         $res = $equipments->toArray();
         $res['data'] = $data;
         $res['total'] = $equipments->total();
+        $res['status'] = 200;
+        return response()->json($res);
+    }
+
+    public function search2($search) {
+        $piece = Piece::find($search);
+        $data = [];
+        $search = '';
+        $data[] = $piece->getArrayInfo();
+        $res['data'] = $data;
         $res['status'] = 200;
         return response()->json($res);
     }

@@ -57,9 +57,18 @@ class PieceController extends Controller
             $key = str_random(6);
             $full_item_photo_dir = config('image.image_root').'/pieces';
             $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
-            $size = config('image.sizes.equipments');
+            $size = config('image.sizes.pieces');
             ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
             $equipment->image = $fileName;
+            $equipment->save();
+        }
+        if (Input::hasFile('image_upload_list')) {
+            $key = str_random(6);
+            $full_item_photo_dir = config('image.image_root').'/piecesList';
+            $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+            $size = config('image.sizes.pieces');
+            ImageLib::upload_image(Input::file('image_upload_list'), $full_item_photo_dir, $fileName, $size, 0);
+            $equipment->image_list = $fileName;
             $equipment->save();
         }
         $equipment->cleanCache();
@@ -107,6 +116,15 @@ class PieceController extends Controller
                 $equipment->image = $fileName;
                 $equipment->save();
             }
+            if (Input::hasFile('image_upload_list')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/piecesList';
+                $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.pieces');
+                ImageLib::upload_image(Input::file('image_upload_list'), $full_item_photo_dir, $fileName, $size, 0);
+                $equipment->image_list = $fileName;
+                $equipment->save();
+            }
             $equipment->cleanCache();
             return redirect('/pieces')->withSuccess('Tạo mới thành công');
         }
@@ -115,6 +133,11 @@ class PieceController extends Controller
     public function destroy($id) {
         $equipment = Piece::find($id);
         if (!empty($equipment->image)) {
+            $full_item_photo_dir = config('image.image_root').'/pieces';
+            $size = config('image.sizes.equipments');
+            ImageLib::delete_image($full_item_photo_dir, $equipment->image, $size);
+        }
+        if (!empty($equipment->image_list)) {
             $full_item_photo_dir = config('image.image_root').'/pieces';
             $size = config('image.sizes.equipments');
             ImageLib::delete_image($full_item_photo_dir, $equipment->image, $size);

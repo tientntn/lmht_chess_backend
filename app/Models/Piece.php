@@ -49,6 +49,7 @@ class Piece extends Moloquent {
             "content"   =>     $this->content,
             "status"    =>     $this->status,
             "thumb" => $this->getImages(),
+            "image_equipment" => $this->getImagesList(),
         );
         return $rels;
     }
@@ -58,6 +59,20 @@ class Piece extends Moloquent {
             $data['Small'] = env("IMAGE_URL").'/pieces/'.$this->image.'_100x100.png';
             $data['Medium'] = env("IMAGE_URL").'/pieces/'.$this->image.'_100x100.png';
             $data['Large'] = env("IMAGE_URL").'/pieces/'.$this->image.'_600x600.png';
+        } else {
+            $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';
+            $data['Medium'] = env("HOME_PAGE").'/images/thumb_default.png';
+            $data['Large'] = env("HOME_PAGE").'/images/thumb_default.png';
+        }
+        return $data;
+    }
+
+    public function getImagesList() {
+        $data = [];
+        if ($this->image_list) {
+            $data['Small'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_100x100.png';
+            $data['Medium'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_100x100.png';
+            $data['Large'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_600x600.png';
         } else {
             $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';
             $data['Medium'] = env("HOME_PAGE").'/images/thumb_default.png';
