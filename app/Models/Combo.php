@@ -16,9 +16,9 @@ class Combo extends Moloquent {
             return config('image.image_url_admin').'/back/images/thumb_default.png';
         } else {
             if ($size) {
-                return env("IMAGE_URL").'equipments/'.$this->image.'_'.$size.'.png';
+                return env("IMAGE_URL").'combos/'.$this->image.'_'.$size.'.png';
             } else {
-                return env("IMAGE_URL").'equipments/'.$this->image.'.png';
+                return env("IMAGE_URL").'combos/'.$this->image.'.png';
             }
         }
     }
