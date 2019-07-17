@@ -74,7 +74,9 @@ class Heros extends Moloquent {
        $categories = $this->category;
        foreach ($categories as $category) {
            $categoryFind = Category::find($category);
-           $data[] = $categoryFind->title;
+          if($categoryFind) {
+              $data[] = $categoryFind->title;
+          }
        }
        return $data;
     }
