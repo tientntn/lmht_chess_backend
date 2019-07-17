@@ -79,7 +79,10 @@
                         <select class="chosen-select form-control" name="category[]" multiple tabindex="4" id="">
                             <option value=""></option>
                             @foreach($categories as $category)
-                            <option value="{{$category['id']}}">{{$category['title']}}</option>
+                                <?php
+                                    $selected =$hero->category ? (in_array($category['id'], $hero->category ) ? 'selected' : '') : '';
+                                ?>
+                            <option value="{{$category['id']}}" {{ $selected }}>{{$category['title']}}</option>
                             @endforeach
                         </select>
                     </div>
