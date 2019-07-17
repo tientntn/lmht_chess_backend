@@ -81,9 +81,9 @@ class Piece extends Moloquent {
     public function getImagesList() {
         $data = [];
         if ($this->image_list) {
-            $data['Small'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_100x100.png';
-            $data['Medium'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_100x100.png';
-            $data['Large'] = env("IMAGE_URL").'/piecesList/'.$this->image.'_600x600.png';
+            $data['Small'] = env("IMAGE_URL").'/piecesList/'.$this->image_list.'_100x100.png';
+            $data['Medium'] = env("IMAGE_URL").'/piecesList/'.$this->image_list.'_100x100.png';
+            $data['Large'] = env("IMAGE_URL").'/piecesList/'.$this->image_list.'_600x600.png';
         } else {
             $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';
             $data['Medium'] = env("HOME_PAGE").'/images/thumb_default.png';
