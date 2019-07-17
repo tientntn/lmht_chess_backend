@@ -72,14 +72,15 @@ class Heros extends Moloquent {
     public function categoryArray() {
         $data = [];
        $categories = $this->category;
-       foreach ($categories as $category) {
-           $categoryFind = Category::find($category);
-           dd($categoryFind);
-          if($categoryFind) {
-              $data[] = $categoryFind->title;
-          }
+       if($categories) {
+           foreach ($categories as $category) {
+               $categoryFind = Category::find($category);
+               if($categoryFind) {
+                   $data[] = $categoryFind->title;
+               }
+           }
        }
-       return $data;
+        return $data;
     }
 //    public function categories() {
 //        return $this->hasMany('App\Models\Category','category','_id');
