@@ -77,7 +77,7 @@
                     <label class="col-sm-3 control-label" >Upload ảnh danh sách đồ</label>
                     <div class="col-sm-6" >
                         @if (!empty($piece->image_list))
-                            <img src="{{ $piece->urlPath('100x100') }}" id="image_temp_1" class="image-thumb-upload"/>
+                            <img src="{{ $piece->urlPathList('100x100') }}" id="image_temp_1" class="image-thumb-upload"/>
                         @else
                             <img src="{{ config('image.image_url_admin').'/images/thumb_default.png' }}" id="image_temp_1" class="image-thumb-upload"/>
                         @endif

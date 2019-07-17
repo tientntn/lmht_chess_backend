@@ -65,7 +65,7 @@ class PieceController extends Controller
         if (Input::hasFile('image_upload_list')) {
             $key = str_random(6);
             $full_item_photo_dir = config('image.image_root').'/piecesList';
-            $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+            $fileName = str_slug(Input::file('image_upload_list')->getClientOriginalName()).'_'.$key;
             $size = config('image.sizes.pieces');
             ImageLib::upload_image(Input::file('image_upload_list'), $full_item_photo_dir, $fileName, $size, 0);
             $equipment->image_list = $fileName;
@@ -117,9 +117,10 @@ class PieceController extends Controller
                 $equipment->save();
             }
             if (Input::hasFile('image_upload_list')) {
+//                dd(Input::all());
                 $key = str_random(6);
                 $full_item_photo_dir = config('image.image_root').'/piecesList';
-                $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+                $fileName = str_slug(Input::file('image_upload_list')->getClientOriginalName()).'_'.$key;
                 $size = config('image.sizes.pieces');
                 ImageLib::upload_image(Input::file('image_upload_list'), $full_item_photo_dir, $fileName, $size, 0);
                 $equipment->image_list = $fileName;
