@@ -35,6 +35,14 @@ class HeroController extends Controller
             $data[] = $category->getArrayInfo();
         }
         $this->data['categories'] = $data;
+
+        $equipments = Equipment::all();
+        $data_equipment = [];
+        foreach ($equipments as $equipment) {
+            $data_equipment[] = $equipment->getArrayInfo();
+        }
+        $this->data['equipments'] = $data_equipment;
+
 //        dd( $this->data);
         return view('heroes.form', $this->data);
     }
@@ -56,6 +64,7 @@ class HeroController extends Controller
         $hero->content = Input::get('content');
         $hero->status = intval(Input::get('status'));
         $hero->category = Input::get('category');
+        $hero->equipment_ids = Input::get('equipment_ids');
 
         $fields = $hero->languageFields();
         foreach ($fields as $field) {
@@ -90,6 +99,14 @@ class HeroController extends Controller
                 $data[] = $category->getArrayInfo();
             }
             $this->data['categories'] = $data;
+
+            $equipments = Equipment::all();
+            $data_equipment = [];
+            foreach ($equipments as $equipment) {
+                $data_equipment[] = $equipment->getArrayInfo();
+            }
+            $this->data['equipments'] = $data_equipment;
+        
             return view('heroes.form', $this->data);
         }
     }
@@ -111,7 +128,7 @@ class HeroController extends Controller
             $hero->short_content = Input::get('short_content');
             $hero->status = intval(Input::get('status'));
             $hero->category = Input::get('category');
-//            $hero->piece2 = Input::get('piece2');
+            $hero->equipment_ids = Input::get('equipment_ids');
             $fields = $hero->languageFields();
             foreach ($fields as $field) {
                 $key = $field['key'];

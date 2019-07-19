@@ -36,7 +36,7 @@
                 </div>
                 @include('errors/error_validation', ['errors' => $errors])
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Tên mảnh đồ *</label>
+                    <label class="col-sm-3 control-label">Tên tướng*</label>
                     <div class="col-sm-6">
                         {!! Form::text('title', $hero->title, array('placeholder' => '', 'class' => 'form-control')) !!}
                     </div>
@@ -49,12 +49,12 @@
                         </div>
                     </div>
             @endif
-            <!--  <div class="form-group">
-                        <label class="col-sm-3 control-label" >Mô tả ngắn</label>
-                         <div class="col-sm-9">
-                          <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $hero->short_content }}</textarea>
-                        </div>
-                      </div> -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" >Mô tả ngắn*</label>
+                    <div class="col-sm-9">
+                        <textarea name="content" id="content" class="form-control">{{ old('short_content') ? old('short_content') : $hero->short_content }}</textarea>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" >Mô tả *</label>
                     <div class="col-sm-9">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">tộc</label>
+                    <label class="col-sm-3 control-label">Bộ tộc</label>
                     <input type="hidden" class="" name="category" value="">
                     <div class="col-sm-6">
                         <select class="chosen-select form-control" name="category[]" multiple tabindex="4" id="">
@@ -83,6 +83,22 @@
                                     $selected =$hero->category ? (in_array($category['id'], $hero->category ) ? 'selected' : '') : '';
                                 ?>
                             <option value="{{$category['id']}}" {{ $selected }}>{{$category['title']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Trang bị hỗ trợ</label>
+                    <input type="hidden" class="" name="category" value="">
+                    <div class="col-sm-6">
+                        <select class="chosen-select form-control" name="equipment[]" multiple tabindex="4" id="">
+                            <option value=""></option>
+                            @foreach($equipments as $equipment)
+                                <?php
+                                    $selected =$hero->equipment_ids ? (in_array($equipment['id'], $hero->equipment_ids ) ? 'selected' : '') : '';
+                                ?>
+                            <option value="{{$equipment['id']}}" {{ $selected }}>{{$equipment['title']}}</option>
                             @endforeach
                         </select>
                     </div>
