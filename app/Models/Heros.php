@@ -58,10 +58,13 @@ class Heros extends Moloquent {
             "status"    =>     $this->status,
             "thumb" => $this->getImages(),
         );
-        $equipments = Equipment::whereIn('_id', $this->equipment_ids)->get();
+       
         $data_equipment = [];
-        foreach ($equipments as $equipment) {
-            $data_equipment[] = $equipment->getArrayInfo();
+        if ($this->equipment_ids) {
+             $equipments = Equipment::whereIn('_id', $this->equipment_ids)->get();
+            foreach ($equipments as $equipment) {
+                $data_equipment[] = $equipment->getArrayInfo();
+            }
         }
         $rels['equipments'] = $data_equipment;
         return $rels;
