@@ -48,11 +48,11 @@
                             {!! Form::text('slug', $hero->slug, array('placeholder' => '', 'class' => 'form-control')) !!}
                         </div>
                     </div>
-            @endif
+                @endif
                 <div class="form-group">
                     <label class="col-sm-3 control-label" >Mô tả ngắn*</label>
                     <div class="col-sm-9">
-                        <textarea name="content" id="content" class="form-control">{{ old('short_content') ? old('short_content') : $hero->short_content }}</textarea>
+                        <textarea name="short_content" id="short_content" class="form-control">{{ old('short_content') ? old('short_content') : $hero->short_content }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -74,7 +74,6 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Bộ tộc</label>
-                    <input type="hidden" class="" name="category" value="">
                     <div class="col-sm-6">
                         <select class="chosen-select form-control" name="category[]" multiple tabindex="4" id="">
                             <option value=""></option>
@@ -90,7 +89,6 @@
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Trang bị hỗ trợ</label>
-                    <input type="hidden" class="" name="category" value="">
                     <div class="col-sm-6">
                         <select class="chosen-select form-control" name="equipment[]" multiple tabindex="4" id="">
                             <option value=""></option>
@@ -104,11 +102,11 @@
                     </div>
                 </div>
 
-                {{--<div class="header">--}}
-                    {{--<br/>--}}
-                    {{--<h3 class="box-title">Nội dung tiếng Anh</h3>--}}
-                    {{--@include('inc/language_fields', ['object' => $hero, 'fields' => $hero->languageFields()])--}}
-                {{--</div>--}}
+                <div class="header">
+                    <br/>
+                    <h3 class="box-title">Nội dung tiếng Anh</h3>
+                    @include('inc/language_fields', ['object' => $hero, 'fields' => $hero->languageFields()])
+                </div>
 
                 <div class="row">
                     <div class="col-sm-offset-4 col-sm-8">

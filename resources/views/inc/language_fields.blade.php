@@ -19,6 +19,13 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{ $field['name'] }} {{ $field['required'] ? '*' : '' }}</label>
                 <div class="col-sm-9">
+                    <textarea name="{{ $key }}" class="form-control">{{ old($key) ? old($key) : $object->$key }}</textarea>
+                </div>
+            </div>
+         @elseif ($field['type'] == 'richtext')
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{ $field['name'] }} {{ $field['required'] ? '*' : '' }}</label>
+                <div class="col-sm-9">
                     <textarea name="{{ $key }}" class="rich_text">{{ old($key) ? old($key) : $object->$key }}</textarea>
                 </div>
             </div>

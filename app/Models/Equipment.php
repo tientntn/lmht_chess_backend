@@ -48,6 +48,12 @@ class Equipment extends Moloquent {
         "content" => $this->content,
         "thumb" => $this->getImages(),
     );
+    $pieces = Piece::whereIn('_id', [$this->piece1, $this->piece2])->get();
+    $data_piece = [];
+    foreach ($pieces as $piece) {
+      $data_piece[] = $piece->getArrayInfo();
+    }
+    $rels['pieces'] = $data_piece;
     return $rels;
   }
   public function getArrayInfoPiece($search) {

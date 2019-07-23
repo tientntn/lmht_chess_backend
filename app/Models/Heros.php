@@ -42,6 +42,11 @@ class Heros extends Moloquent {
         }
         return $slug;
     }
+
+    public function equipments() {
+      return Equipment::whereIn('_id', $this->equipment_ids)->get();
+    }
+
     public function getArrayInfo() {
         $rels = array(
             "id"       =>      $this->_id,
@@ -53,6 +58,12 @@ class Heros extends Moloquent {
             "status"    =>     $this->status,
             "thumb" => $this->getImages(),
         );
+        $equipments = Equipment::whereIn('_id', $this->equipment_ids)->get();
+        $data_equipment = [];
+        foreach ($equipments as $equipment) {
+            $data_equipment[] = $equipment->getArrayInfo();
+        }
+        $rels['equipments'] = $data_equipment;
         return $rels;
     }
     public function getImages() {
@@ -96,16 +107,16 @@ class Heros extends Moloquent {
                 'placehoder' => ''
             ],
             [
-                'name' => 'Đường dẫn hiển thị trên url',
-                'key' => 'slug_'.$lang,
-                'type' => 'text',
+                'name' => 'Nội dung ngắn',
+                'key' => 'short_content_'.$lang,
+                'type' => 'textarea',
                 'required' => false,
                 'placehoder' => ''
             ],
             [
                 'name' => 'Nội dung',
                 'key' => 'content_'.$lang,
-                'type' => 'textarea',
+                'type' => 'richtext',
                 'required' => false,
                 'placehoder' => ''
             ]

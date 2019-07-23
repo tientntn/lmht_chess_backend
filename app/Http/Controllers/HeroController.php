@@ -89,7 +89,6 @@ class HeroController extends Controller
     public function edit($id) {
         $hero = Heros::find($id);
         $this->data['hero'] = $hero;
-
         if (!$hero) {
             return view('errors.404');
         } else {
@@ -128,7 +127,7 @@ class HeroController extends Controller
             $hero->short_content = Input::get('short_content');
             $hero->status = intval(Input::get('status'));
             $hero->category = Input::get('category');
-            $hero->equipment_ids = Input::get('equipment_ids');
+            $hero->equipment_ids = Input::get('equipment');
             $fields = $hero->languageFields();
             foreach ($fields as $field) {
                 $key = $field['key'];
