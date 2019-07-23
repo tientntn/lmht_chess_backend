@@ -28,15 +28,17 @@ class HeroController extends Controller
         $search = Input::get('search');
         $searchCategory = Input::get('category_id');
         $heroes = Heros::where(function($query) use($search) {
-            if($search) {
-                return $query->where('title','like','%'.$search.'%');
-            }
-        })->where(function($query) use($searchCategory) {
-            if($searchCategory) {
-                return $query->where('category', $searchCategory);
-            }
-        })
-            ->where('_id','!=','')->paginate($per_page);
+                        if($search) {
+                            return $query->where('title','like','%'.$search.'%');
+                        }
+                    })->where(function($query) use($searchCategory) {
+                        if($searchCategory) {
+                            return $query->where('category', $searchCategory);
+                        }
+                    })
+                    ->where('_id','!=','')
+                    ->orderBy('name', 'asc')
+                    ->paginate($per_page);
         $data = [];
         foreach ($heroes as $hero) {
             $data[] = $hero->getArrayInfo();

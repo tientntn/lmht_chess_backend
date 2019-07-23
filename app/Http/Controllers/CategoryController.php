@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $this->data['categories'] = Category::orderBy('status', 'desc')->get();
+        $this->data['categories'] = Category::orderBy('name', 'desc')->get();
         return view('categories.index', $this->data);
     }
 

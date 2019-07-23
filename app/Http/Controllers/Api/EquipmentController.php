@@ -32,7 +32,9 @@ class EquipmentController extends Controller
                 return $query->where('category', $searchCategory);
             }
         })
-            ->where('_id','!=','')->paginate($per_page);
+            ->where('_id','!=','')
+            ->orderBy('name', 'asc')
+            ->paginate($per_page);
         $data = [];
         foreach ($heroes as $hero) {
             $data[] = $hero->getArrayInfo();

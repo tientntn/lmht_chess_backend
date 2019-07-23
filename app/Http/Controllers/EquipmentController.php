@@ -20,7 +20,7 @@ class EquipmentController extends Controller
 
     public function index()
     {
-      $this->data['equipments'] = Equipment::orderBy('status', 'desc')->get();
+      $this->data['equipments'] = Equipment::orderBy('name', 'desc')->get();
       return view('equipments.index', $this->data);
     }
 
