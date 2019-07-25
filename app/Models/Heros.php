@@ -50,9 +50,10 @@ class Heros extends Moloquent {
     public function getArrayInfo() {
         $rels = array(
             "id"       =>      $this->_id,
-            "title"     =>     $this->title,
+            "title"     =>     $this->transa('title'),
             "slug"      =>     $this->slug,
-            "content"   =>     $this->content,
+            "content"   =>     $this->transa('content'),
+            "short_content"   =>     $this->transa('short_content'),
             "category"  =>     $this->category,
             "categoryArray"  =>$this->categoryArray(),
             "status"    =>     $this->status,
@@ -103,7 +104,7 @@ class Heros extends Moloquent {
     public function languageFields($lang = 'en') {
         $data = [
             [
-                'name' => 'Tiêu đề',
+                'name' => 'Tên tướng',
                 'key' => 'title_'.$lang,
                 'type' => 'text',
                 'required' => false,

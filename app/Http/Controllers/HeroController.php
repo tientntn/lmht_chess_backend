@@ -62,6 +62,7 @@ class HeroController extends Controller
         $slug = Input::get('slug');
         $hero->slug = $hero->checkSlug($slug);
         $hero->content = Input::get('content');
+        $hero->short_content = Input::get('short_content');
         $hero->status = intval(Input::get('status'));
         $hero->category = Input::get('category');
         $hero->equipment_ids = Input::get('equipment_ids');

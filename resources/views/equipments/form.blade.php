@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label" >Mô tả ngắn</label>
                              <div class="col-sm-9">
-                              <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $equipment->short_content }}</textarea>
+                              <textarea name="short_content" id="short_content" class="form-control">{{ old('short_content') ? old('short_content') : $equipment->short_content }}</textarea>
                             </div>
                         </div>
                           <div class="form-group">

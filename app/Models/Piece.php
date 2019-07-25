@@ -55,9 +55,9 @@ class Piece extends Moloquent {
     public function getArrayInfo() {
         $rels = array(
             "id"       =>      $this->_id,
-            "title"     =>     $this->title,
+            "title"     =>     $this->transa('title'),
             "slug"      =>     $this->slug,
-            "content"   =>     $this->content,
+            "content"   =>    $this->transa('content'),
             "status"    =>     $this->status,
             "thumb" => $this->getImages(),
             "image_equipment" => $this->getImagesList(),
@@ -97,13 +97,6 @@ class Piece extends Moloquent {
             [
                 'name' => 'Tiêu đề',
                 'key' => 'title_'.$lang,
-                'type' => 'text',
-                'required' => false,
-                'placehoder' => ''
-            ],
-            [
-                'name' => 'Đường dẫn hiển thị trên url',
-                'key' => 'slug_'.$lang,
                 'type' => 'text',
                 'required' => false,
                 'placehoder' => ''

@@ -35,8 +35,8 @@
                         <tr role="row">
                           <th style="width: 5%;">STT</th>
                           <th style="width: 15%;">Ảnh</th>
-                          <th>Tiêu đề</th>
-                          <th style="width: 10%;">Trạng thái</th>
+                          <th>Tên Tướng</th>
+                          <th style="width: 20%;">Giới thiệu ngắn</th>
                           <th style="width: 15%;">Thao tác</th>
                         </tr>
                       </thead>
@@ -54,7 +54,7 @@
                                 <br/>
                                 <a href="/heroes/{{ $hero->slug }}" target="_blank">{{ $hero->slug }}</a>
                               </td>
-                              <td>{{ $hero->displayStatus() }}</td>
+                              <td>{{ $hero->short_content }}</td>
                               <td><a class="btn btn-info btn-margin" href="/heroes/{{$hero->id}}/edit" ><i class="fa fa-pencil"></i></a>
                                   <button data-toggle="modal" data-target="#mod-error" class="delete_equipment btn btn-danger btn-margin" pieces-id="{{ $hero->_id }}" ><i class="fa fa-times"></i></button>
                                </td>

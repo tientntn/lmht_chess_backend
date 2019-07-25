@@ -42,10 +42,10 @@ class Equipment extends Moloquent {
   public function getArrayInfo() {
     $rels = array(
         "id"   => $this->_id,
-        "title" => $this->title,
+        "title" => $this->transa('title'),
         "slug" => $this->slug,
-        "short_content" => $this->short_content,
-        "content" => $this->content,
+        "short_content" => $this->transa('short_content'),
+        "content" => $this->transa('content'),
         "thumb" => $this->getImages(),
     );
     $first = Piece::find($this->piece1);
@@ -64,10 +64,10 @@ class Equipment extends Moloquent {
   public function getArrayInfoPiece($search) {
       $rels = array(
           "id"   => $this->_id,
-          "title" => $this->title,
+          "title" => $this->transa('title'),
           "slug" => $this->slug,
-          "short_content" => $this->short_content,
-          "content" => $this->content,
+          "short_content" => $this->transa('short_content'),
+          "content" => $this->transa('content'),
           "thumb" => $this->getImages(),
           "piece" => $this->pieceArray($search),
       );
@@ -103,23 +103,23 @@ class Equipment extends Moloquent {
   public function languageFields($lang = 'en') {
     $data = [
       [
-        'name' => 'Tiêu đề',
+        'name' => 'Tên trang bị',
         'key' => 'title_'.$lang,
         'type' => 'text',
         'required' => false,
         'placehoder' => ''
       ],
       [
-        'name' => 'Đường dẫn hiển thị trên url',
-        'key' => 'slug_'.$lang,
-        'type' => 'text',
+        'name' => 'Nội dung ngắn',
+        'key' => 'short_content_'.$lang,
+        'type' => 'textarea',
         'required' => false,
         'placehoder' => ''
       ],
       [
         'name' => 'Nội dung',
         'key' => 'content_'.$lang,
-        'type' => 'textarea',
+        'type' => 'richtexa',
         'required' => false,
         'placehoder' => ''
       ]

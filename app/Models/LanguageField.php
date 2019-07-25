@@ -13,4 +13,9 @@ trait LanguageField
         $key = $lang == 'vi' ? $field : $field.'_'.$lang;
         return $this->$key ? $this->$key : $this->$field;
     }
+    public function transa($field) {
+        $lang = Input::get('lang');
+        $key = $lang == 'vi' ? $field : $field.'_'.$lang;
+        return $this->$key ? $this->$key : $this->$field;
+    }
 }
