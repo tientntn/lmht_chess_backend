@@ -17,7 +17,7 @@ class ComboController extends Controller
 
     public function index()
     {
-        $this->data['combos'] = Combo::orderBy('title', 'desc')->get();
+        $this->data['combos'] = Combo::orderBy('title', 'asc')->get();
         return view('combos.index', $this->data);
     }
 
