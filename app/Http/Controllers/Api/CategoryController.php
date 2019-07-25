@@ -27,7 +27,7 @@ class CategoryController extends Controller
             if($search) {
                 return $query->where('title','like','%'.$search.'%');
             }
-        })->where('_id','!=','')->paginate($per_page);
+        })->where('_id','!=','')->orderBy('title', 'asc')->paginate($per_page);
         $data = [];
         foreach ($heroes as $hero) {
             $data[] = $hero->getArrayInfo();

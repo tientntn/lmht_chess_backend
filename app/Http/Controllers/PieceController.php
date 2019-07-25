@@ -20,7 +20,7 @@ class PieceController extends Controller
 
     public function index()
     {
-        $this->data['pieces'] = Piece::orderBy('name', 'desc')->get();
+        $this->data['pieces'] = Piece::orderBy('title', 'desc')->get();
         return view('pieces.index', $this->data);
     }
 

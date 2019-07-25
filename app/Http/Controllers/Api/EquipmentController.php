@@ -33,7 +33,7 @@ class EquipmentController extends Controller
             }
         })
             ->where('_id','!=','')
-            ->orderBy('name', 'asc')
+            ->orderBy('title', 'asc')
             ->paginate($per_page);
         $data = [];
         foreach ($heroes as $hero) {
