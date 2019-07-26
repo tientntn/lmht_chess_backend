@@ -71,6 +71,15 @@ class PieceController extends Controller
             $equipment->image_list = $fileName;
             $equipment->save();
         }
+        if (Input::hasFile('image_upload_list_en')) {
+            $key = str_random(6);
+            $full_item_photo_dir = config('image.image_root').'/piecesList';
+            $fileName = str_slug(Input::file('image_upload_list_en')->getClientOriginalName()).'_'.$key;
+            $size = config('image.sizes.pieces');
+            ImageLib::upload_image(Input::file('image_upload_list_en'), $full_item_photo_dir, $fileName, $size, 0);
+            $equipment->image_list_en = $fileName;
+            $equipment->save();
+        }
         $equipment->cleanCache();
         return redirect('/pieces')->withSuccess('Tạo mới thành công');
     }
@@ -124,6 +133,16 @@ class PieceController extends Controller
                 $size = config('image.sizes.pieces');
                 ImageLib::upload_image(Input::file('image_upload_list'), $full_item_photo_dir, $fileName, $size, 0);
                 $equipment->image_list = $fileName;
+                $equipment->save();
+            }
+
+            if (Input::hasFile('image_upload_list_en')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/piecesList';
+                $fileName = str_slug(Input::file('image_upload_list_en')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.pieces');
+                ImageLib::upload_image(Input::file('image_upload_list_en'), $full_item_photo_dir, $fileName, $size, 0);
+                $equipment->image_list_en = $fileName;
                 $equipment->save();
             }
             $equipment->cleanCache();
