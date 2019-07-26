@@ -31,6 +31,17 @@ class Piece extends Moloquent {
             }
         }
     }
+    public function urlPathListEn($size = '') {
+        if ($this->image_list == '') {
+            return config('image.image_url_admin').'/back/images/thumb_default.png';
+        } else {
+            if ($size) {
+                return env("IMAGE_URL").'piecesList/'.$this->image_list_en.'_'.$size.'.png';
+            } else {
+                return env("IMAGE_URL").'piecesList/'.$this->image_list_en.'.png';
+            }
+        }
+    }
 
     public function displayStatus() {
         return $this->status == 1 ? 'Hiển thị' : 'Ẩn';
