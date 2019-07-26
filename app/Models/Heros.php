@@ -54,6 +54,7 @@ class Heros extends Moloquent {
             "slug"      =>     $this->slug,
             "content"   =>     $this->transa('content'),
             "short_content"   =>     $this->transa('short_content'),
+            "description"   =>     $this->transa('short_content'),
             "category"  =>     $this->category,
             "categoryArray"  =>$this->categoryArray(),
             "status"    =>     $this->status,
