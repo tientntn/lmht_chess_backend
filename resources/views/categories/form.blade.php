@@ -35,7 +35,7 @@
                   </div>
                     @include('errors/error_validation', ['errors' => $errors])
                       <div class="form-group">
-                        <label class="col-sm-3 control-label">Tên trang bị *</label>
+                        <label class="col-sm-3 control-label">Tên bộ tộc *</label>
                         <div class="col-sm-6">
                            {!! Form::text('title', $category->title, array('placeholder' => '', 'class' => 'form-control')) !!} 
                         </div>
@@ -48,12 +48,17 @@
                           </div>
                         </div>
                       @endif
-                     <!--  <div class="form-group">
-                        <label class="col-sm-3 control-label" >Mô tả ngắn</label>
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label" >Mô tả</label>
                          <div class="col-sm-9">
-                          <textarea name="short_content" id="short_content" class="rich_text">{{ old('short_content') ? old('short_content') : $category->short_content }}</textarea>
+                          <textarea name="content" id="content" class="rich_text">{{ old('content') ? old('content') : $category->content }}</textarea>
                         </div>
-                      </div> -->
+                      </div>
+                    <div class="header">
+                    <br/>
+                      <h3 class="box-title">Nội dung tiếng Anh</h3>
+                      @include('inc/language_fields', ['object' => $category, 'fields' => $category->languageFields()])
+                  </div>
                   <div class="row">
                     <div class="col-sm-offset-4 col-sm-8">
                         <a href="/equipments" class="btn btn-default">Trở lại</a>

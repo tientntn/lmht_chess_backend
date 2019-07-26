@@ -73,8 +73,8 @@ class Heros extends Moloquent {
     public function getImages() {
         $data = [];
         if ($this->image) {
-            $data['Small'] = env("IMAGE_URL").'/heroes/'.$this->image.'_100x100.png';
-            $data['Medium'] = env("IMAGE_URL").'/heroes/'.$this->image.'_100x100.png';
+            $data['Small'] = env("IMAGE_URL").'/heroes/'.$this->image.'_600x600.png';
+            $data['Medium'] = env("IMAGE_URL").'/heroes/'.$this->image.'_600x600.png';
             $data['Large'] = env("IMAGE_URL").'/heroes/'.$this->image.'_600x600.png';
         } else {
             $data['Small'] = env("HOME_PAGE").'/images/thumb_default.png';

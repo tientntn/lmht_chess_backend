@@ -47,10 +47,10 @@ class Category extends Moloquent {
     public function getArrayInfo() {
         $rels = array(
             "id"   => $this->_id,
-            "title" => $this->title,
+            "title" => $this->transa('title'),
             "slug" => $this->slug,
-            "short_content" => $this->short_content,
-            "content" => $this->content,
+            "short_content" => $this->transa('short_content'),
+            "content" =>  $this->transa('content'),
             "thumb" => $this->getImages(),
         );
         return $rels;
@@ -75,13 +75,6 @@ class Category extends Moloquent {
             [
                 'name' => 'Tiêu đề',
                 'key' => 'title_'.$lang,
-                'type' => 'text',
-                'required' => false,
-                'placehoder' => ''
-            ],
-            [
-                'name' => 'Đường dẫn hiển thị trên url',
-                'key' => 'slug_'.$lang,
                 'type' => 'text',
                 'required' => false,
                 'placehoder' => ''
