@@ -70,36 +70,32 @@ class EquipmentController extends Controller
     public function search1() {
         $search1 = Input::get('piece_id_1');
         $search2 = Input::get('piece_id_2');
-        $search = [$search1, $search2];
-            // $equipments = Equipment::where(function($query) use($search1) {
-            //     if($search1) {
-            //         return $query->where('piece1', $search1);
-            //     }
-            // })->where(function($query) use($search2) {
-            //     if($search2) {
-            //         return $query->where('piece2', $search2);
-            //     }
-            // })->where(function($query) use($search1,$search2) {
-            //     if(!$search2 && !$search1) {
-            //         return $query->where('_id', '');
-            //     }
-            // })->paginate(100);
-            $equipments = Equipment::whereIn('piece1', $search)
-                                    ->whereIn('piece2', $search)
-                                    ->paginate(100);
+            $equipments = Equipment::where(function($query) use($search1) {
+                if($search1) {
+                    return $query->where('piece1', $search1);
+                }
+            })->where(function($query) use($search2) {
+                if($search2) {
+                    return $query->where('piece2', $search2);
+                }
+            })->where(function($query) use($search1,$search2) {
+                if(!$search2 && !$search1) {
+                    return $query->where('_id', '');
+                }
+            })->paginate(100);
         $data = [];
-        // $search = '';
-        // if($search1) {
-        //     $search = $search1;
-        //     if($search2) {
-        //         $search ='';
-        //     }
-        // }elseif ($search2) {
-        //     $search = $search2;
-        //     if($search1) {
-        //         $search ='';
-        //     }
-        // }
+        $search = '';
+        if($search1) {
+            $search = $search1;
+            if($search2) {
+                $search ='';
+            }
+        }elseif ($search2) {
+            $search = $search2;
+            if($search1) {
+                $search ='';
+            }
+        }
         foreach ($equipments as $equipment) {
             $data[] = $equipment->getArrayInfoPiece($search);
         }
