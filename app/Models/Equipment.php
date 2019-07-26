@@ -46,7 +46,7 @@ class Equipment extends Moloquent {
         "slug" => $this->slug,
         "short_content" => $this->transa('short_content'),
         "description" => $this->transa('short_content'),
-        "content" => $this->transa('content'),
+        "content" => $this->transa('short_content'),
         "thumb" => $this->getImages(),
     );
     $first = Piece::find($this->piece1);
