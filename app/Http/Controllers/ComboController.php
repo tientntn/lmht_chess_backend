@@ -52,6 +52,12 @@ class ComboController extends Controller
             $combo->save();
         }
 
+        $fields = $combo->languageFields();
+        foreach ($fields as $field) {
+            $key = $field['key'];
+            $combo->$key = Input::get($key);
+        }
+
         $combo->save();
         $combo->cleanCache();
         return redirect('/combos')->withSuccess('Tạo mới thành công');
@@ -90,6 +96,12 @@ class ComboController extends Controller
                 ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
                 $combo->image = $fileName;
                 $combo->save();
+            }
+
+            $fields = $combo->languageFields();
+            foreach ($fields as $field) {
+                $key = $field['key'];
+                $combo->$key = Input::get($key);
             }
 
             $combo->save();

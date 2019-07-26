@@ -47,7 +47,7 @@ class Combo extends Moloquent {
     public function getArrayInfo() {
         $rels = array(
             "id"   => $this->_id,
-            "title" => $this->title,
+            "title" => $this->transa('title'),
             "slug" => $this->slug,
             "link"  => $this->link,
             "thumb" => $this->getImages(),
@@ -72,26 +72,12 @@ class Combo extends Moloquent {
     public function languageFields($lang = 'en') {
         $data = [
             [
-                'name' => 'Tiêu đề',
+                'name' => 'Tên',
                 'key' => 'title_'.$lang,
                 'type' => 'text',
                 'required' => false,
                 'placehoder' => ''
             ],
-            [
-                'name' => 'Đường dẫn hiển thị trên url',
-                'key' => 'slug_'.$lang,
-                'type' => 'text',
-                'required' => false,
-                'placehoder' => ''
-            ],
-            [
-                'name' => 'Nội dung',
-                'key' => 'content_'.$lang,
-                'type' => 'textarea',
-                'required' => false,
-                'placehoder' => ''
-            ]
         ];
         return $data;
     }

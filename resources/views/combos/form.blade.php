@@ -65,6 +65,13 @@
                           <input type="file" name="image_upload" id="image_upload"  class="form-control"/>
                       </div>
                   </div>
+
+                  <div class="header">
+                      <br/>
+                      <h3 class="box-title">Nội dung tiếng Anh</h3>
+                      @include('inc/language_fields', ['object' => $combo, 'fields' => $combo->languageFields()])
+                  </div>
+                
                   <div class="row">
                     <div class="col-sm-offset-4 col-sm-8">
                         <a href="/combos" class="btn btn-default">Trở lại</a>
