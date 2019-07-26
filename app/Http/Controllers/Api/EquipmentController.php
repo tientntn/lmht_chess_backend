@@ -70,17 +70,14 @@ class EquipmentController extends Controller
     public function search1() {
         $search1 = Input::get('piece_id_1');
         $search2 = Input::get('piece_id_2');
-            $equipments = Equipment::where(function($query) use($search1) {
+            $equipments = Equipment::where(function($query) use($search1, $search1) {
                 if($search1) {
-                    return $query->where('piece1', $search1);
+                    return $query->where('piece1', $search1)->where('piece2', $search2);
                 }
-            })->where(function($query) use($search2) {
-                if($search2) {
-                    return $query->where('piece2', $search2);
-                }
-            })->where(function($query) use($search1,$search2) {
-                if(!$search2 && !$search1) {
-                    return $query->where('_id', '');
+            })
+            ->orWhere(function($query) use($search1, $search1) {
+                if($search1) {
+                    return $query->where('piece2', $search1)->where('piece1', $search2);
                 }
             })->paginate(100);
         $data = [];
