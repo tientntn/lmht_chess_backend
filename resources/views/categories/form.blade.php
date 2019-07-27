@@ -51,7 +51,7 @@
                       <div class="form-group">
                         <label class="col-sm-3 control-label" >Mô tả</label>
                          <div class="col-sm-9">
-                          <textarea name="content" id="content" class="rich_text">{{ old('content') ? old('content') : $category->content }}</textarea>
+                          <textarea name="content" id="content" class="form-control">{{ old('content') ? old('content') : $category->content }}</textarea>
                         </div>
                       </div>
                     <div class="header">
