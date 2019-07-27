@@ -46,7 +46,7 @@
                           <tr>
                               <td>{{ $i }}</td>
                               <td>
-                                {{ $category->title }}
+                                {{ $category->title.' '.$category->title_en }}
                                 <br/>
                                 <a href="/categories/{{ $category->slug }}" target="_blank">{{ $category->slug }}</a>
                               </td>
