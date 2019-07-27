@@ -23,18 +23,19 @@ class ComboController extends Controller
         $per_page = Input::has('per_page') ? 0+Input::get('per_page') : 15;
         $search = Input::get('search');
         $searchCategory = Input::get('category_id');
-        $heroes = Combo::where(function($query) use($search) {
+        $combos = Combo::where(function($query) use($search) {
             if($search) {
                 return $query->where('title','like','%'.$search.'%');
             }
-        })->where('_id','!=','')->paginate($per_page);
+        })
+        ->orderBy('_id', 'desc')->paginate($per_page);
         $data = [];
-        foreach ($heroes as $hero) {
-            $data[] = $hero->getArrayInfo();
+        foreach ($combos as $combo) {
+            $data[] = $combo->getArrayInfo();
         }
-        $res = $heroes->toArray();
+        $res = $combos->toArray();
         $res['data'] = $data;
-        $res['total'] = $heroes->total();
+        $res['total'] = $combos->total();
         $res['status'] = 200;
         return response()->json($res);
     }
