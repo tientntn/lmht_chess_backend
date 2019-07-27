@@ -49,8 +49,9 @@ class Category extends Moloquent {
             "id"   => $this->_id,
             "title" => $this->transa('title'),
             "slug" => $this->slug,
-            "short_content" => $this->transa('short_content'),
+            "short_content" => $this->transa('content'),
             "content" =>  $this->transa('content'),
+            "description" =>  $this->transa('content'),
             "thumb" => $this->getImages(),
         );
         return $rels;
