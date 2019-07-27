@@ -92,7 +92,7 @@ class Heros extends Moloquent {
            foreach ($categories as $category) {
                $categoryFind = Category::find($category);
                if($categoryFind) {
-                   $data[] = $categoryFind->title;
+                   $data[] = $categoryFind->transa('title');
                }
            }
        }
