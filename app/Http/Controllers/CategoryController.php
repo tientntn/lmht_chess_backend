@@ -46,6 +46,7 @@ class CategoryController extends Controller
         // $slug = str_slug(Input::get('title'));
         $slug = Input::get('slug');
         $category->slug = $category->checkSlug($slug);
+        $category->content = $category->content;
         $fields = $category->languageFields();
         foreach ($fields as $field) {
             $key = $field['key'];
@@ -87,7 +88,7 @@ class CategoryController extends Controller
             $category->title=Input::get('title');
             $slug = Input::has('slug') ? Input::get('slug', $category->title) : str_slug(Input::get('title'));
             $category->slug = $category->checkSlug($slug, $id);
-
+            $category->content = $category->content;
             $fields = $category->languageFields();
             foreach ($fields as $field) {
                 $key = $field['key'];
