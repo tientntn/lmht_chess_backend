@@ -18,5 +18,6 @@ use Illuminate\Http\Request;
     Route::get('/pieces', 'Api\PieceController@index');
     Route::get('/categories', 'Api\CategoryController@index');
     Route::get('/combos', 'Api\ComboController@index');
+    Route::get('/news', 'Api\NewsController@index');
 
     Route::get('/search/equipments', 'Api\EquipmentController@search');

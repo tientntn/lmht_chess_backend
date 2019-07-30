@@ -113,11 +113,12 @@
                 </div>
                 <ul class="nav" id="side-menu" style="padding-top: 60px;">
                     <li><a href="/manage" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">{{ trans('template.dashboard') }}</span></a> </li>
-                    <li><a href="/equipments" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Trang bị</span></a> </li>
-                    <li><a href="/pieces" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Mảnh ghép</span></a> </li>
-                    <li><a href="/heroes" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Tướng</span></a> </li>
-                    <li><a href="/categories" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Tộc</span></a> </li>
-                    <li><a href="/combos" class="waves-effect {{ $segment == '' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Combo</span></a> </li>
+                    <li><a href="/equipments" class="waves-effect {{ $segment == 'equipments' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Trang bị</span></a> </li>
+                    <li><a href="/pieces" class="waves-effect {{ $segment == 'pieces' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Mảnh ghép</span></a> </li>
+                    <li><a href="/heroes" class="waves-effect {{ $segment == 'heroes' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Tướng</span></a> </li>
+                    <li><a href="/categories" class="waves-effect {{ $segment == 'categories' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Tộc</span></a> </li>
+                    <li><a href="/combos" class="waves-effect {{ $segment == 'combos' ? 'active' : '' }}"><i class="linea-icon fa-fw ti-bar-chart-alt"></i><span class="hide-menu">Combo</span></a> </li>
+                     <li><a href="/newss" class="waves-effect {{ $segment == 'newss' ? 'active' : '' }}"><i class="linea-icon fa-fw fa-book"></i><span class="hide-menu">News</span></a> </li>
 
                     <li class="devider"></li>
                     <li> <a href="/users" class="waves-effect {{ $segment == 'users' ? 'active' : '' }}"><i data-icon="/" class="linea-icon fa-fw fa ti-user"></i> Tài khoản hệ thống</a></li>

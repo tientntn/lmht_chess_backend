@@ -71,6 +71,10 @@ Route::group(array('middleware' => ['https','auth_manage', 'language']), functio
         Route::post('/combos/{id}/destroy', 'ComboController@destroy');
         Route::resource('combos', 'ComboController');
 
+        Route::get('/newss/search', 'NewsController@search');
+        Route::post('/newss/{id}/destroy', 'NewsController@destroy');
+        Route::resource('newss', 'NewsController');
+
 
         Route::post('/users/search', 'UserController@search');
         Route::get('/users/search', 'UserController@search');
