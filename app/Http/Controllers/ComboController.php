@@ -42,6 +42,7 @@ class ComboController extends Controller
         $combo->slug = $combo->checkSlug($slug);
         $combo->link = Input::get('link');
         $combo->status = intval(Input::get('status'));
+        $combo->content = Input::get('content');
         if (Input::hasFile('image_upload')) {
             $key = str_random(6);
             $full_item_photo_dir = config('image.image_root').'/combos';
@@ -88,6 +89,7 @@ class ComboController extends Controller
             $combo->slug = $combo->checkSlug($slug, $id);
             $combo->link = Input::get('link');
             $combo->status = intval(Input::get('status'));
+            $combo->content = Input::get('content');
             if (Input::hasFile('image_upload')) {
                 $key = str_random(6);
                 $full_item_photo_dir = config('image.image_root').'/combos';
