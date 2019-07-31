@@ -51,7 +51,7 @@ class Combo extends Moloquent {
             "slug" => $this->slug,
             "link"  => $this->link,
             "thumb" => $this->getImages(),
-            "content" => $this->transa('content'),
+            "content" => ''.$this->transa('content'),
         );
         return $rels;
     }
