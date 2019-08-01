@@ -206,6 +206,9 @@ strong {
 em {
   font-size: 15px;
 }
+ul {
+  list-style: none;
+}
 
 
 
