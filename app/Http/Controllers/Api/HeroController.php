@@ -51,7 +51,7 @@ class HeroController extends Controller
     }
 
     public function show($id) {
-        $news = News::find($id);
+        $news = Heros::find($id);
         $this->data['post'] = $news;
         return view('news.show', $this->data);
     }
