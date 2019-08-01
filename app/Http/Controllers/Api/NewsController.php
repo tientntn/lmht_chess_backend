@@ -47,4 +47,10 @@ class NewsController extends Controller
         $res['status'] = 200;
         return response()->json($res);
     }
+
+    public function show($id) {
+        $news = News::find($id);
+        $this->data['post'] = $news;
+        return view('news.show', $this->data);
+    }
 }
