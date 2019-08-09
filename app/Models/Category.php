@@ -11,14 +11,14 @@ class Category extends Moloquent {
     use LanguageField;
     protected $collection = 'category';
 
-    public function urlPath($size = '') {
-        if ($this->image == '') {
+    public function urlPath($size = '', $field) {
+        if ($this->$field == '') {
             return config('image.image_url_admin').'/back/images/thumb_default.png';
         } else {
             if ($size) {
-                return env("IMAGE_URL").'equipments/'.$this->image.'_'.$size.'.png';
+                return env("IMAGE_URL").'categories/'.$this->$field.'_'.$size.'.png';
             } else {
-                return env("IMAGE_URL").'equipments/'.$this->image.'.png';
+                return env("IMAGE_URL").'categories/'.$this->$field.'.png';
             }
         }
     }
@@ -57,6 +57,20 @@ class Category extends Moloquent {
         return $rels;
     }
 
+    public function getArrayInfoFull() {
+        $rels = array(
+            "id"   => $this->_id,
+            "title" => $this->title,
+            "title_en" => $this->title_en,
+            "slug" => $this->slug,
+            "short_content" => $this->transa('content'),
+            "content" =>  $this->transa('content'),
+            "description" =>  $this->transa('content'),
+            "thumb" => $this->getImages(),
+        );
+        return $rels;
+    }
+
     public function getImages() {
         $data = [];
         if ($this->image) {
@@ -83,6 +97,13 @@ class Category extends Moloquent {
             [
                 'name' => 'Nội dung',
                 'key' => 'content_'.$lang,
+                'type' => 'textarea',
+                'required' => false,
+                'placehoder' => ''
+            ],
+             [
+                'name' => 'Kích hoạt',
+                'key' => 'power_'.$lang,
                 'type' => 'textarea',
                 'required' => false,
                 'placehoder' => ''

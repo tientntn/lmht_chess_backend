@@ -47,6 +47,20 @@ class CategoryController extends Controller
         $slug = Input::get('slug');
         $category->slug = $category->checkSlug($slug);
         $category->content = $category->content;
+        $power = Input::get('power');
+        $data = explode(';', $power);
+
+        $data_power = [];
+        foreach ($data as $dt) {
+            $values = $data = explode('=', $dt);
+            if (count($values) == 2) {
+                $row = [];
+                $row[$values[0]] = $values[1];
+                $data_power[] = $row;
+            }
+        }
+        $category->power = $data_power;
+        $category->power_text = $power;
         $fields = $category->languageFields();
         foreach ($fields as $field) {
             $key = $field['key'];
@@ -54,6 +68,27 @@ class CategoryController extends Controller
         }
         
         $category->save();
+
+        if (Input::hasFile('image_upload')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/categories';
+                $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.categories');
+                ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
+                $category->image_active = $fileName;
+                $category->save();
+            }
+
+            if (Input::hasFile('image_upload2')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/categories';
+                $fileName = str_slug(Input::file('image_upload2')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.categories');
+                ImageLib::upload_image(Input::file('image_upload2'), $full_item_photo_dir, $fileName, $size, 0);
+                $category->image_inactive = $fileName;
+                $category->save();
+            }
+
         $category->cleanCache();
         return redirect('/categories')->withSuccess('Tạo mới thành công');
     }
@@ -61,7 +96,7 @@ class CategoryController extends Controller
     public function edit($id) {
         $category = Category::find($id);
         $this->data['category'] = $category;
-
+        dd($category);
         if (!$category) {
             return view('errors.404');
         } else {
@@ -89,6 +124,34 @@ class CategoryController extends Controller
             $slug = Input::has('slug') ? Input::get('slug', $category->title) : str_slug(Input::get('title'));
             $category->slug = $category->checkSlug($slug, $id);
             $category->content = $category->content;
+            $power = Input::get('power');
+            $data = explode(';', str_replace("\r\n", "", $power));
+            $data_power = [];
+            foreach ($data as $dt) {
+                $values = $data = explode('=', $dt);
+                if (count($values) == 2) {
+                    $row = [];
+                    $row[$values[0]] = $values[1];
+                    $data_power[] = $row;
+                }
+            }
+            $category->power_data = $data_power;
+            $category->power_text = $power;
+
+            $power = Input::get('power_en');
+            $data = explode(';', str_replace("\r\n", "", $power));
+            $data_power = [];
+            foreach ($data as $dt) {
+                $values = $data = explode('=', $dt);
+                if (count($values) == 2) {
+                    $row = [];
+                    $row[$values[0]] = $values[1];
+                    $data_power[] = $row;
+                }
+            }
+            $category->power_data_en = $data_power;
+            $category->power_text_en = $power;
+
             $fields = $category->languageFields();
             foreach ($fields as $field) {
                 $key = $field['key'];
@@ -96,6 +159,28 @@ class CategoryController extends Controller
             }
 
             $category->save();
+
+            if (Input::hasFile('image_upload')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/categories';
+                $fileName = str_slug(Input::file('image_upload')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.categories');
+                ImageLib::upload_image(Input::file('image_upload'), $full_item_photo_dir, $fileName, $size, 0);
+                $category->image_active = $fileName;
+                $category->save();
+            }
+
+            if (Input::hasFile('image_upload2')) {
+                $key = str_random(6);
+                $full_item_photo_dir = config('image.image_root').'/categories';
+                $fileName = str_slug(Input::file('image_upload2')->getClientOriginalName()).'_'.$key;
+                $size = config('image.sizes.categories');
+                ImageLib::upload_image(Input::file('image_upload2'), $full_item_photo_dir, $fileName, $size, 0);
+                $category->image_inactive = $fileName;
+                $category->save();
+            }
+
+
             $category->cleanCache();
             return redirect('/categories')->withSuccess('Tạo mới thành công');
         }

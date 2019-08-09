@@ -54,6 +54,31 @@
                           <textarea name="content" id="content" class="form-control">{{ old('content') ? old('content') : $category->content }}</textarea>
                         </div>
                       </div>
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label" >Kích hoạt</label>
+                         <div class="col-sm-9">
+                          <textarea name="power" id="power" class="form-control">{{ old('power') ? old('power') : $category->power_text }}</textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label" >Upload Ảnh</label>
+                        <div class="col-sm-4" >
+                          <label>Active</label>
+                            @if (!empty($category->image_active))
+                              <img src="{{ $category->urlPath('100x100', 'image_inactive') }}" class="image-thumb-upload"/>
+                            @endif
+                            <input type="file" name="image_upload" id="image_upload"  class="form-control"/>
+                        </div>
+                        <div class="col-sm-4" >
+                          <label>Inactive</label>
+                            @if (!empty($category->image_inactive))
+                              <img src="{{ $category->urlPath('100x100', 'image_inactive') }}" class="image-thumb-upload"/>
+                            @endif
+                            <input type="file" name="image_upload2" id="image_upload"  class="form-control"/>
+                        </div>
+                      </div>
+
                     <div class="header">
                     <br/>
                       <h3 class="box-title">Nội dung tiếng Anh</h3>

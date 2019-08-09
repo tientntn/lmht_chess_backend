@@ -24,6 +24,7 @@ return array(
         "piecesList"    => array("100x100","600x600"),
         "combos"    => array("100x100","600x600"),
         "news"    => array("100x100","600x600"),
+        "categories" => array("100x100"),
     ),
     'image_root' => env('IMAGE_ROOT'),
     'image_url' => env('IMAGE_URL'),

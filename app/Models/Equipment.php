@@ -62,6 +62,32 @@ class Equipment extends Moloquent {
     $rels['pieces'] = $data_piece;
     return $rels;
   }
+
+  public function getArrayInfoFull() {
+    $rels = array(
+        "id"   => $this->_id,
+        "title" => $this->title,
+        "title_en" => $this->title_en,
+        "slug" => $this->slug,
+        "short_content" => $this->transa('short_content'),
+        "description" => $this->transa('short_content'),
+        "content" => $this->transa('short_content'),
+        "thumb" => $this->getImages(),
+    );
+    $first = Piece::find($this->piece1);
+    $sercond = Piece::find($this->piece2);
+    $data_piece = [];
+    if ($first) {
+      $data_piece[] = $first->getArrayInfo();
+    }
+    if ($sercond) {
+      $data_piece[] = $sercond->getArrayInfo();
+    }
+    
+    $rels['pieces'] = $data_piece;
+    return $rels;
+  }
+
   public function getArrayInfoPiece($search) {
       $rels = array(
           "id"   => $this->_id,

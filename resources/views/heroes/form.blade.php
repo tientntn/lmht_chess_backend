@@ -81,7 +81,7 @@
                                 <?php
                                     $selected =$hero->category ? (in_array($category['id'], $hero->category ) ? 'selected' : '') : '';
                                 ?>
-                            <option value="{{$category['id']}}" {{ $selected }}>{{$category['title']}}</option>
+                            <option value="{{$category['id']}}" {{ $selected }}>{{$category['title'].'-'.$category['title_en']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -96,7 +96,7 @@
                                 <?php
                                     $selected =$hero->equipment_ids ? (in_array($equipment['id'], $hero->equipment_ids ) ? 'selected' : '') : '';
                                 ?>
-                            <option value="{{$equipment['id']}}" {{ $selected }}>{{$equipment['title']}}</option>
+                            <option value="{{$equipment['id']}}" {{ $selected }}>{{$equipment['title'].'-'.$equipment['title_en']}}</option>
                             @endforeach
                         </select>
                     </div>
