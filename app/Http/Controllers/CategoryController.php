@@ -96,7 +96,7 @@ class CategoryController extends Controller
     public function edit($id) {
         $category = Category::find($id);
         $this->data['category'] = $category;
-        dd($category);
+        // dd($category);
         if (!$category) {
             return view('errors.404');
         } else {
