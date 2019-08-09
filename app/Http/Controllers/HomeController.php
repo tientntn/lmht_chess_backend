@@ -19,8 +19,8 @@ class HomeController extends Controller
     }
 
     public function test() {
-    	$categories = Category::first();
-    	foreach ($categories as $category) {
+    	$category = Category::first();
+    	// foreach ($categories as $category) {
 
     		$data_power = $category->power_data;
     		$new_power = [];
@@ -42,7 +42,7 @@ class HomeController extends Controller
     		}
     		$category->power_data_en = $new_power;
     		$category->save();
-    	}
-    	dd($categories);
+    	// }
+    	dd($category);
     }
 }
