@@ -12,15 +12,15 @@ class Category extends Moloquent {
     protected $collection = 'category';
 
     public function urlPath($size = '', $field) {
-        if ($this->$field == '') {
-            return config('image.image_url_admin').'/back/images/thumb_default.png';
-        } else {
-            if ($size) {
-                return env("IMAGE_URL").'categories/'.$this->$field.'_'.$size.'.png';
-            } else {
+        // if ($this->$field == '') {
+        //     return config('image.image_url_admin').'/back/images/thumb_default.png';
+        // } else {
+        //     if ($size) {
+        //         return env("IMAGE_URL").'categories/'.$this->$field.'_'.$size.'.png';
+        //     } else {
                 return env("IMAGE_URL").'categories/'.$this->$field.'.png';
-            }
-        }
+        //     }
+        // }
     }
 
     public function displayStatus() {

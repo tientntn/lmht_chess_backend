@@ -21,6 +21,8 @@ use Illuminate\Http\Request;
     Route::get('/news', 'Api\NewsController@index');
     Route::get('/news/{id}/show', 'Api\NewsController@show');
     Route::get('/heroes/{id}/show', 'Api\HeroController@show');
+    Route::get('/chess', 'Api\HeroController@chess');
+
 
 
 

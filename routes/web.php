@@ -28,6 +28,8 @@ Route::get('/config', function (){
     echo 'config xong. vui long nhap lieu';
 });
 
+Route::get('/test', 'HomeController@test');
+
 
 Route::group(array('middleware' => 'https', 'language'), function()
 {

@@ -54,13 +54,29 @@ class CategoryController extends Controller
         foreach ($data as $dt) {
             $values = $data = explode('=', $dt);
             if (count($values) == 2) {
-                $row = [];
-                $row[$values[0]] = $values[1];
-                $data_power[] = $row;
+                $data_power[$values[0]] = $values[1];
             }
         }
         $category->power = $data_power;
         $category->power_text = $power;
+        $fields = $category->languageFields();
+        foreach ($fields as $field) {
+            $key = $field['key'];
+            $category->$key = Input::get($key);
+        }
+
+        $power = Input::get('power_en');
+        $data = explode(';', str_replace("\r\n", "", $power));
+        $data_power = [];
+        foreach ($data as $dt) {
+            $values = $data = explode('=', $dt);
+            if (count($values) == 2) {
+                $data_power[$values[0]] = $values[1];
+            }
+        }
+        $category->power_data_en = $data_power;
+        $category->power_text_en = $power;
+
         $fields = $category->languageFields();
         foreach ($fields as $field) {
             $key = $field['key'];
@@ -130,9 +146,9 @@ class CategoryController extends Controller
             foreach ($data as $dt) {
                 $values = $data = explode('=', $dt);
                 if (count($values) == 2) {
-                    $row = [];
-                    $row[$values[0]] = $values[1];
-                    $data_power[] = $row;
+                    // $row = [];
+                    // $row[$values[0]] = $values[1];
+                    $data_power[$values[0]] = $values[1];
                 }
             }
             $category->power_data = $data_power;
@@ -144,9 +160,7 @@ class CategoryController extends Controller
             foreach ($data as $dt) {
                 $values = $data = explode('=', $dt);
                 if (count($values) == 2) {
-                    $row = [];
-                    $row[$values[0]] = $values[1];
-                    $data_power[] = $row;
+                    $data_power[$values[0]] = $values[1];
                 }
             }
             $category->power_data_en = $data_power;
