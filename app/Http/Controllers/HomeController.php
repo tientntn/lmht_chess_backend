@@ -19,7 +19,7 @@ class HomeController extends Controller
     }
 
     public function test() {
-    	$categories = Category::skip(1)->get();
+    	$categories = Category::first();
     	foreach ($categories as $category) {
 
     		$data_power = $category->power_data;
