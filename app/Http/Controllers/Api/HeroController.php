@@ -75,13 +75,12 @@ class HeroController extends Controller
 
         foreach ($data_category as $key => $cat) {
             $category = Category::find($key);
-            $cat['name'] = $category->trans('title');
+            $cat['name'] = $category->transa('title');
             $cat['image'] = $category->urlPath('','image_active');
-            $cat['content'] = $category->trans('content');
+            $cat['content'] = $category->transa('content');
             $cat['active'] = false;
 
-
-            $power_data = $category->trans('power_data');
+            $power_data = $category->transa('power_data');
             $new_power = [];
             $is_active = '';
             $i = 0;
