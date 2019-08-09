@@ -46,7 +46,7 @@ class CategoryController extends Controller
         // $slug = str_slug(Input::get('title'));
         $slug = Input::get('slug');
         $category->slug = $category->checkSlug($slug);
-        $category->content = $category->content;
+        $category->content = Input::get('content');
         $power = Input::get('power');
         $data = explode(';', $power);
 
@@ -123,7 +123,7 @@ class CategoryController extends Controller
             $category->title=Input::get('title');
             $slug = Input::has('slug') ? Input::get('slug', $category->title) : str_slug(Input::get('title'));
             $category->slug = $category->checkSlug($slug, $id);
-            $category->content = $category->content;
+            $category->content = Input::get('content');
             $power = Input::get('power');
             $data = explode(';', str_replace("\r\n", "", $power));
             $data_power = [];
