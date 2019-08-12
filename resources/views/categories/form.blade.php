@@ -66,7 +66,7 @@
                         <div class="col-sm-4" >
                           <label>Active</label>
                             @if (!empty($category->image_active))
-                              <img src="{{ $category->urlPath('100x100', 'image_inactive') }}" class="image-thumb-upload"/>
+                              <img src="{{ $category->urlPath('100x100', 'image_active') }}" class="image-thumb-upload"/>
                             @endif
                             <input type="file" name="image_upload" id="image_upload"  class="form-control"/>
                         </div>

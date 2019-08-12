@@ -19,6 +19,7 @@ class Category extends Moloquent {
         //         return env("IMAGE_URL").'categories/'.$this->$field.'_'.$size.'.png';
         //     } else {
                 return env("IMAGE_URL").'categories/'.$this->$field.'.png';
+                
         //     }
         // }
     }

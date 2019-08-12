@@ -48,6 +48,8 @@
                               <td>
                                 {{ $category->title.' '.$category->title_en }}
                                 <br/>
+                                <img src="{{ $category->urlPath('100x100', 'image_active') }}" class="image-thumb-upload"/>
+                                <br/>
                                 <a href="/categories/{{ $category->slug }}" target="_blank">{{ $category->slug }}</a>
                               </td>
                               <td>{{ $category->displayStatus() }}</td>
