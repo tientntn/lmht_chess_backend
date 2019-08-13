@@ -52,6 +52,7 @@ class Combo extends Moloquent {
             "link"  => $this->link,
             "thumb" => $this->getImages(),
             "content" => ''.$this->transa('content'),
+            "created_at" => date('Y-m-d', strtotime($this->created_at))
         );
         return $rels;
     }
