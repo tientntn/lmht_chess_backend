@@ -53,6 +53,7 @@ class News extends Moloquent {
             "content" =>  $this->content,
             "description" =>  $this->description,
             "thumb" => $this->getImages(),
+            "created_at" => date('Y-m-d', strtotime($this->created_at))
         );
         return $rels;
     }
