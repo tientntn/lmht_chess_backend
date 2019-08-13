@@ -58,6 +58,7 @@ class HeroController extends Controller
 
      public function chess() {
         $hero_ids = Input::get('heros');
+        $hero_ids = array_unique($hero_ids);
         $data_category = [];
         foreach ($hero_ids as $hero_id) {
             $hero = Heros::find($hero_id);
@@ -76,7 +77,7 @@ class HeroController extends Controller
         foreach ($data_category as $key => $cat) {
             $category = Category::find($key);
             $cat['name'] = $category->transa('title');
-            $cat['image'] = $category->urlPath('','image_active');
+            $cat['image'] = $category->urlPath('','image_inactive');
             $cat['content'] = $category->transa('content');
             $cat['active'] = false;
 
@@ -110,6 +111,7 @@ class HeroController extends Controller
 
             $cat['power'] = $new_power;
             if ($cat['active']) {
+                $cat['image'] = $category->urlPath('','image_active');
                 array_unshift($data_results, $cat);
             } else {
                 $data_results[] = $cat;
