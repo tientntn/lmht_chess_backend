@@ -76,6 +76,17 @@
                       </div>
                   </div>
 
+                  <div class="form-group" id="form-role">
+                        <label class="col-sm-3 control-label">Trạng thái</label>
+                        <div class="col-sm-6">
+                           <?php 
+                                $data_statuss = ['' => 'Bình thường', '1' => 'Ghim'];
+                            ?>
+                            
+                            {!! Form::select('status', $data_statuss, $news->lang, array('id' => 'status', 'class' => 'form-control')) !!}
+                        </div>
+                      </div>
+
                   </div>
                   <div class="row">
                     <div class="col-sm-offset-4 col-sm-8">

@@ -26,6 +26,19 @@ class NewsController extends Controller
             $lang = 'vi';
         }
 
+        $newss1 = News::where(function($query) use($search) {
+                            if($search) {
+                                return $query->where('title','like','%'.$search.'%');
+                            }
+                        })
+                        ->where(function($query) use($lang) {
+                            if($lang) {
+                                return $query->where('lang','=', $lang);
+                            }
+                        })
+                        ->where('status', '1')
+                        ->orderBy('_id', 'desc')->get();
+
         $newss = News::where(function($query) use($search) {
                             if($search) {
                                 return $query->where('title','like','%'.$search.'%');
@@ -36,8 +49,12 @@ class NewsController extends Controller
                                 return $query->where('lang','=', $lang);
                             }
                         })
+                        ->where('status','!=', '1')
                         ->orderBy('_id', 'desc')->paginate($per_page);
         $data = [];
+        foreach ($newss1 as $news) {
+            $data[] = $news->getArrayInfo();
+        }
         foreach ($newss as $news) {
             $data[] = $news->getArrayInfo();
         }

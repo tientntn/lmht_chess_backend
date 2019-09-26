@@ -99,6 +99,7 @@ class NewsController extends Controller
         $news->content =  Input::get('content');
         $news->short_content =  Input::get('short_content');
         $news->lang =  Input::get('lang');
+        $news->status =  Input::get('status');
         
         $fields = $news->languageFields();
         if ($fields) {
@@ -157,6 +158,7 @@ class NewsController extends Controller
             $news->content =  Input::get('content');
             $news->short_content =  Input::get('short_content');
             $news->lang =  Input::get('lang');
+            $news->status =  Input::get('status');
 
             $fields = $news->languageFields();
             if ($fields) {
