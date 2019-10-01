@@ -23,7 +23,7 @@ class HeroController extends Controller
 
     public function index()
     {
-        $this->data['heroes'] = Heros::orderBy('title', 'asc')->get();
+        $this->data['heroes'] = Heros::orderBy('title', 'asc')->paginate(10);
         return view('heroes.index', $this->data);
     }
 
