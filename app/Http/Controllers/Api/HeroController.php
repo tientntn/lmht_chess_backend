@@ -24,7 +24,8 @@ class HeroController extends Controller
     public function index()
     {
         $data = [];
-        $per_page = Input::has('per_page') ? 0+Input::get('per_page') : 15;
+        // $per_page = Input::has('per_page') ? 0+Input::get('per_page') : 15;
+        $per_page = 10;
         $search = Input::get('search');
         $searchCategory = Input::get('category_id');
         $heroes = Heros::where(function($query) use($search) {
