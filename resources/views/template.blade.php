@@ -213,7 +213,7 @@
     <script src='/plugins/calendar/dist/fullcalendar.min.js'></script>
     <script src="/plugins/calendar/dist/cal-init.js"></script> -->
     <!-- Custom Theme JavaScript -->
-    <script src="/js/custom.js"></script>
+    
 
     <!-- <script src="/js/dashboard1.js"></script> -->
     <!-- Custom tab JavaScript -->
@@ -230,6 +230,8 @@
     <!--Style Switcher -->
     <!-- Phần này để set thay đổi theme. Project mới chú ý thay đổi đường dẫn theme file css/color trong file này. và có thể set default theme -->
     <script src="/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    <script src="/js/custom.js"></script>
 
     @yield('script')
     @yield('scriptend')
