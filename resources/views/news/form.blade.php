@@ -83,7 +83,7 @@
                                 $data_statuss = ['' => 'Bình thường', '1' => 'Ghim'];
                             ?>
                             
-                            {!! Form::select('status', $data_statuss, $news->lang, array('id' => 'status', 'class' => 'form-control')) !!}
+                            {!! Form::select('status', $data_statuss, $news->status, array('id' => 'status', 'class' => 'form-control')) !!}
                         </div>
                       </div>
 
